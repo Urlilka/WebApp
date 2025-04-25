@@ -1,0 +1,118 @@
+/* Подключение шрифтов */
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Robotobold';
+    src: url('../fonts/Robotobold.ttf');
+    
+}
+@font-face {
+    font-family: 'RobotoItalic';
+    src: url('../fonts/Robotoitalic.ttf');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Robotolight';
+    src: url('../fonts/Robotolight.ttf');
+}
+
+a > btn {
+    text-decoration: none;
+    color: white;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+a:hover{
+    color: #007226;
+}
+
+h1,h2,h3,h4,h5,h6{
+
+    font-family: Robotobold;
+
+}
+p, a{
+
+    font-family: Roboto;
+
+}
+label{
+    font-family: Robotolight;
+}
+.form-text {
+    font-family: RobotoItalic;
+}
+h1{
+    background-color: aqua;
+}
+.bg-c{
+    background-color: bisque;
+    /* margin: 5px; */
+}
+.bg-body-login{
+
+    background-color:#E0E1E9 ;
+}
+.button-login{
+
+    background-color: #10096B;
+    color: white;
+}
+.button-login:hover{
+
+    background-color: #39347a;
+    color: white;
+}
+
+.border-login{
+
+    border-color: #10096B;
+}
+.border-manager{
+    border-color: #007226;
+}
+.button-manager{
+    background-color: #007226;
+    color: white;
+    border-color:#007226 ;
+}
+.button-manager:hover{
+    background-color: #0de455;
+}
+/* Панель Администратор */
+
+/* Для шапки окна*/
+.bg-header-admin {
+    padding: 24px;
+    background-color: #10096B;
+    color: white;
+    font-size: 28pt;
+    font-family: Robotolight;
+}
+.bg-header-manager {
+    padding: 24px;
+    background-color: #007226;
+    color: white;
+    font-size: 28pt;
+    font-family: Robotolight;
+}
+
+.height-200{
+    height: 200px;
+}
+/* АНАЛИТИКА */
+.bg-header-analitics{
+    padding: 24px;
+    background-color: #B60000;
+    color: white;
+    font-size: 28pt;
+    font-family: Robotolight;
+}

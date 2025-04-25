@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+    <div class="col bg-header-manager ">Изменить клиента</div>
+    <div class="container mt-5">
+        <div class="row text-center">
+            <h2>Данные клиента</h2>
+        </div>
+        <table class="table mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Фамилия</th>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Телефон</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Адрес</th>
+                    <th scope="col">Изменить</th>
+                    <th scope="col">Отменить</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>{{client.lastName}}</td>
+                    <td>{{client.firstName}}</td>
+                    <td>{{client.phoneNumber}}</td>
+                    <td>{{client.email}}</td>
+                    <td>{{client.address}}</td>
+                    <td>
+                        <a href="edit_client.html" class="btn btn-success">Изменить</a>
+                    </td>
+                    <td>
+                        <a href="./manager.html" class="btn btn-danger">Отменить</a>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <div class="row">
+
+            <form method="post" action="/manager/update/{{client.id}}" class="row d-flex justify-content-center g-3">
+                <div class="row">
+                    <div class="col-3">
+                        <div id="secondaryHelp" class="form-text">Введите Фамилию клиента</div>
+                        <input type="text" name="lastname" value="{{client.lastName}}" class="form-control border-login" id="surnameInputsecondary"
+                            aria-describedby="secondaryHelp" required>
+                    </div>
+
+                    <div class="col-3">
+                        <div id="firstHelp" class="form-text">Введите Имя клиента</div>
+                        <input type="text" name="firstname" value="{{client.firstName}}" class="form-control border-login" id="nameInputfirst"
+                            aria-describedby="firstHelp" required>
+                    </div>
+
+                    <div class="col-3">
+                        <div id="phoneHelp" class="form-text">Введите номер клиента</div>
+                        <input type="text" name="number" value="{{client.phoneNumber}}" class="form-control border-login" id="phoneInputfirst"
+                            aria-describedby="phoneHelp" required>
+                    </div>
+
+                    <div class="col-3 d-flex align-items-end">
+<!--                        <a href="/manager" type="submit" class="btn button-manager" style="width: 100%;">Изменить данные-->
+<!--                            клиента</a>-->
+                        <button type="submit" class="btn button-manager" style="width: 100%;">Изменить данные</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-3">
+                        <div id="emailHelp" class="form-text">E-mail клиента</div>
+                        <input type="text" name="mail" value="{{client.email}}" class="form-control border-login" id="emailInputfirst"
+                            aria-describedby="emailHelp" required>
+                    </div>
+
+                    <div class="col-9">
+                        <div id="addressHelp" class="form-text">Адрес клиента</div>
+                        <input type="text" name="address" value="{{client.address}}" class="form-control border-login" id="addressInputfirst"
+                            aria-describedby="addressHelp" required>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+
+    </div>
+
+
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</body>
+
+
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+    <div class="col bg-header-analitics ">Окно работы с клиентом</div>
+    <div class="container mt-5">
+        <div class="row text-center">
+            <h2>Данные клиента</h2>
+        </div>
+        <table class="table mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Фамилия</th>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Телефон</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Адрес</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Иванов</td>
+                    <td>Иван</td>
+                    <td>+7(000)00-00-000</td>
+                    <td>ivan@ivan.ivan</td>
+                    <td>629007, ЯНАО, г. Салехард, ул. Совхозная 14.</td>
+                    
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <div class="row">
+
+            <form class="row d-flex justify-content-center g-3">
+                <div class="row m-3">
+                    <div class="col-3">
+                        <div id="dateHelp" class="form-text">Дата работы с клиентом</div>
+                        <input type="date" class="form-control border-manager" id="exampleInputdate"
+                            aria-describedby="dateHelp" required>
+
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <div class="col-3">
+                        <div id="workHelp" class="form-text">Способ общения с клиентом</div>
+                        <input type="text" class="form-control border-manager" id="exampleInputwork"
+                            aria-describedby="workHelp" required>
+
+                    </div>
+                </div>    
+                <div class="row m-3 " >
+                    <div class="col-10">
+                        <div id="resultHelp" class="form-text">Результат работы с клиентом</div>
+                        <input type="text" class="form-control border-manager height-200" id="exampleInputResult"
+                            aria-describedby="resultHelp" required>
+
+                    </div>
+                </div>     
+                <div class="row m-3 d-flex justify-content-between">
+                    <div class="col-3 d-flex align-items-end">
+                        <a href="./manager.html" type="submit" class="btn button-manager" style="width: 100%;">Добавить</a>
+                    </div>
+                
+                    <div class="col-3 d-flex align-items-end">
+                        <a href="./manager.html" type="submit" class="btn button-login" style="width: 100%;">Вернуться к списку клиентов</a>
+                    </div>
+                
+                
+                </div>   
+                    
+                
+
+                
+
+            </form>
+
+        </div>
+
+
+    </div>
+
+
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</body>
+
+{% endblock %}

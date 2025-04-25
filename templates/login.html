@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body class="bg-body-login">
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card p-4 shadow" style="width: 25rem;">
+            <h5 class="card-title text-center mb-4">Хранение информации о клиентах</h5>
+                <!-- Форма ввода логина и пароля -->
+                <form method="post" action="/">
+                    <div class="mb-3">
+                      <label for="exampleInputLogin" class="form-label">Логин</label>
+                      <input name="login" type="text" class="form-control border-login" id="exampleInputLogin" aria-describedby="loginHelp" required>
+                      <div id="loginHelp" class="form-text">Введите Ваш логин</div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Пароль</label>
+                      <input name="password" type="password" class="form-control border-login" id="exampleInputPassword1" aria-describedby="passwordHelp" required>
+                      <div id="passwordHelp" class="form-text">Введите Ваш пароль</div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                       <button type="submit" class="btn btn-primary w-50 button-login">Войти</button>
+                    </div>
+                    
+                  </form>     
+
+        </div>
+
+    </div>
+
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</body>
+
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body>
+    <div class="col bg-header-manager ">Панель Менеджера</div>
+    <div class="container mt-5">
+        <div class="row text-center">
+            <h2>Список пользователей</h2>
+        </div>
+        <table class="table mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Фамилия</th>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Телефон</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Адрес</th>
+                    <th scope="col">Изменить</th>
+                    <th scope="col">Удалить</th>
+                </tr>
+            </thead>
+            <tbody>
+            <!-- Цикл вывода пользователей из БД в список тут - на сайте -->
+            {% for client in clients %}
+                <tr>
+                    <th scope="row">{{loop.index}}</th>
+                    <td><a href="./work.html">{{client.lastName}}</a></td>
+                    <td>{{client.firstName}}</td>
+                    <td>{{client.phoneNumber}}</td>
+                    <td>{{client.email}}</td>
+                    <td>{{client.address}}</td>
+                    <td>
+                        <a href="/manager/update/{{client.id}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#146c43"
+                                class="bi bi-pencil-square" viewBox="0 0 20 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                            </svg>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/manager/delete/{{client.id}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="red"
+                                class="bi bi-trash3-fill" viewBox="0 0 20 16">
+                                <path
+                                    d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="row">
+
+            <form method="post" action="/manager" class="row d-flex justify-content-center g-3">
+                <div class="row">
+                    <div class="col-3">
+                        <div id="secondaryHelp" class="form-text">Введите Фамилию нового клиента</div>
+                        <input type="text" name="lastname" class="form-control border-login" id="exampleInputsecondary"
+                            aria-describedby="lsecondaryHelp" required>
+
+                    </div>
+                    <div class="col-3">
+                        <div id="firstHelp" class="form-text">Введите Имя нового клиента</div>
+                        <input type="text" name="firstname" class="form-control border-login" id="exampleInputfirst"
+                            aria-describedby="firstHelp" required>
+
+                    </div>
+                    <div class="col-3">
+                        <div id="phoneHelp" class="form-text">Введите номер клиента</div>
+                        <input type="text" name="number" class="form-control border-login" id="phoneInputfirst"
+                            aria-describedby="phoneHelp" required>
+
+                    </div>
+                    <div class="col-3 d-flex align-items-end">
+
+                        <button type="submit" class="btn button-manager" style="width: 100%;">Добавить
+                            пользователей</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-3">
+                        <div id="mailHelp" class="form-text">E-mail клиента</div>
+                        <input type="text" name="mail" class="form-control border-login" id="mailInputfirst"
+                            aria-describedby="phoneHelp" required>
+
+                    </div>
+                    <div class="col-9">
+                        <div id="addressHelp" class="form-text">Адрес клиента</div>
+                        <input type="text" name="address" class="form-control border-login" id="addressInputfirst"
+                            aria-describedby="phoneHelp" required>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+    </div>
+
+
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</body>
+
+{% endblock %}
