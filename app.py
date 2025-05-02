@@ -5,8 +5,10 @@ from werkzeug.utils import redirect
 from flask_login import LoginManager, login_user, login_required, current_user, logout_user
 
 from Controllers.ClientController import ClientController
+from Controllers.InteractionController import InteractionController
+from Controllers.ReportController import ReportController
 from Controllers.UserController import UserController
-
+from Models.Interactions import Interactions
 
 app = Flask(__name__)
 login_manager = LoginManager()
@@ -145,6 +147,7 @@ def update_client(id):
         title = "Изменить клиента"
         client = ClientController.show(id)
         if request.method == "POST":
+
             firstname = request.form.get("firstname")
             surname = request.form.get("lastname")
             number = request.form.get("number")
@@ -178,6 +181,39 @@ def delete_client(id):
         return redirect(url_for("manager"))
     else:
         return redirect(url_for("logout"))
+
+
+@app.route("/manager/work/<int:id>", methods=['POST','GET'])
+@login_required
+def work_custom(id):
+    if current_user.role == "Manager":
+        title = "Изменить данные клиента"
+        client = ClientController.show(id)
+        interaction = InteractionController.show(id)
+        if request.method == "POST":
+
+            date = request.form.get("date")
+            type = request.form.get("type")
+            result = request.form.get("result")
+
+
+            InteractionController.update(
+                id,
+                date = date,
+                type = type,
+                result = result
+            )
+
+            return redirect(url_for("manager"))
+        return render_template(
+            "work.html",
+            title = title,
+            client = client,
+            interaction = interaction,
+            client_id = id
+        )
+    else:
+        return redirect("/")
 
 # Метод выхода
 @app.route("/logout")

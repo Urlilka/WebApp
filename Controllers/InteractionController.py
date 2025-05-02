@@ -13,9 +13,13 @@ class InteractionController:
         return Interactions.select()
 
     # Метод вывода одной записи
+    # @classmethod
+    # def show(cls,id):
+    #     return Interactions.get_or_none(id)
+    #
     @classmethod
-    def show(cls,id):
-        return Interactions.get_or_none(id)
+    def show(cls, client_id):
+        return Interactions.get_or_none(client_id)
     # обновление записи
     @classmethod
     def update(cls,id,**filds):
@@ -30,6 +34,9 @@ class InteractionController:
 if __name__ == "__main__":
     # InteractionController.add(1,'2025-01-16','Звонок','Никакой')
     for row in InteractionController.get():
-        print(row.type)
+        print(row.type,row.date,row.result,row.id)
 
-        
+    if InteractionController.show(24):
+        print("yes")
+    else:
+        print("no")

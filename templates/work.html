@@ -22,11 +22,11 @@
             <tbody>
                 <tr>
                     <th scope="row">1</th>
-                    <td>Иванов</td>
-                    <td>Иван</td>
-                    <td>+7(000)00-00-000</td>
-                    <td>ivan@ivan.ivan</td>
-                    <td>629007, ЯНАО, г. Салехард, ул. Совхозная 14.</td>
+                    <td>{{client.lastName}}</td>
+                    <td>{{client.firstName}}</td>
+                    <td>{{client.phoneNumber}}</td>
+                    <td>{{client.email}}</td>
+                    <td>{{client.address}}</td>
                     
                 </tr>
                 
@@ -35,11 +35,11 @@
 
         <div class="row">
 
-            <form class="row d-flex justify-content-center g-3">
+            <form method="post" action="/manager/work/{{client.id}}" class="row d-flex justify-content-center g-3">
                 <div class="row m-3">
                     <div class="col-3">
                         <div id="dateHelp" class="form-text">Дата работы с клиентом</div>
-                        <input type="date" class="form-control border-manager" id="exampleInputdate"
+                        <input type="date" name="date" value="{{interaction.date}}" class="form-control border-manager" id="exampleInputdate"
                             aria-describedby="dateHelp" required>
 
                     </div>
@@ -47,7 +47,7 @@
                 <div class="row m-3">
                     <div class="col-3">
                         <div id="workHelp" class="form-text">Способ общения с клиентом</div>
-                        <input type="text" class="form-control border-manager" id="exampleInputwork"
+                        <input type="text" name="type" value="{{interaction.type}}" class="form-control border-manager" id="exampleInputwork"
                             aria-describedby="workHelp" required>
 
                     </div>
@@ -55,18 +55,18 @@
                 <div class="row m-3 " >
                     <div class="col-10">
                         <div id="resultHelp" class="form-text">Результат работы с клиентом</div>
-                        <input type="text" class="form-control border-manager height-200" id="exampleInputResult"
+                        <input type="text" name="result" class="form-control border-manager height-200" id="exampleInputResult"
                             aria-describedby="resultHelp" required>
 
                     </div>
                 </div>     
                 <div class="row m-3 d-flex justify-content-between">
                     <div class="col-3 d-flex align-items-end">
-                        <a href="./manager.html" type="submit" class="btn button-manager" style="width: 100%;">Добавить</a>
+                        <button type="submit" class="btn button-manager" style="width: 100%;">Добавить</button>
                     </div>
                 
                     <div class="col-3 d-flex align-items-end">
-                        <a href="./manager.html" type="submit" class="btn button-login" style="width: 100%;">Вернуться к списку клиентов</a>
+                        <a href="/manager.html" class="btn button-login" style="width: 100%;">Вернуться к списку клиентов</a>
                     </div>
                 
                 
